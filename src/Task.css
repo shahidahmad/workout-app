@@ -1,68 +1,45 @@
 .task {
-    width: 100%;
-    margin-top: 15px;
-    border-radius: 15px;
-    background-color: white;
-    box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+    background-color: rgb(83, 83, 83);
     align-items: center;
     min-width: 100vh;
-}
-/* .post__image > img {
-    width: 100%;
-}
-.post__avatar {
-    margin-right: 10px;
-} */
-.task__Info {
-    display: flex;
-    /* position: relative; */
-    align-items: center;
-    padding: 15px;
-    padding-top: 10px;
-    /* border-top: 1px solid lightgray; */
-    /* display: flex; */
-    justify-content: space-evenly;
-    font-size: medium;
-    /* color: gray; */
-    background-color: rgb(232, 231, 231);
-    cursor: pointer;
-}
-.task__topInfo > h3 {
-
-    font-size: medium;
-}
-/* .post__top { */
-    /* display: flex;
-    position: relative;
-    align-items: center;
-    padding: 15px; */
-/* } */
-.post__bottom {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 15px 25px;
-}
-/* .post__options {
-    padding-top: 10px;
-    border-top: 1px solid lightgray;
-    display: flex;
-    justify-content: space-evenly;
-    font-size: medium;
-    color: gray;
-    cursor: pointer;
-    padding: 15px;
-} */
-.post__option {
-    display: flex;
+    justify-content: center;
     align-items: center;
     justify-content: center;
-    padding: 5px;
-    flex: 1;
+    text-align: center;
 }
-.post__options > p {
-    margin-left: 10px;
+.task__Info {
+    display: flex;
+    padding: 15px;
+    max-width: 500px;
+    justify-content: left;
+    align-items: center;
+    margin: auto;
+    box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+    background-color: rgb(207, 207, 207);
+    margin-left: 34%;
+    border-top: 1px solid;
+    justify-content: left;
 }
-.post__option:hover {
-    background-color: #eff2f5;
+.task__text {
+    width: 100%;
+    text-align: left;
+    padding-left: 40px;
+    background-color: rgb(207, 207, 207);
+}
+.task__text > b {
+    background-color: rgb(207, 207, 207);
+}
+.task__remove {
+    position: flex;
+    padding: 5px 20px;
+    margin: 10px 10px;
+    background-color: rgb(182, 182, 182);
     border-radius: 10px;
+    border: 1px solid gray;
+    width: 30%;
+    margin-left: 30px;
+}
+.task__remove:hover {
+    color: #fff;
+    background-color: gray;
 }

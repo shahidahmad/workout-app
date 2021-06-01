@@ -1,31 +1,58 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* font-family: ; */
-}
 .exercise {
-    /* flex: 1; */
-    /* padding: 50px 500px; */
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     justify-content: center;
-    min-height: 50vh;
-    /* padding-left: 28%; */
-}
-.exercise__top {
-    display: flex;
-    border-bottom: 1px solid #eff2f5;
-    padding: 15px;
-}
+    text-align: center;
 
-.exercise__top > form > input {
-    outline-width: 0; 
-    border: none;
+}
+.exercise__header {
+    background-color: gray;;
+    height: 80px;
+    padding-top: 20px;
+    padding-left: 40px;
+    font-size: 26px;
+}
+.exercise__form {
+    display: inline-block;
+    padding: 15px;
+    max-width: 550px;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(207, 207, 207);
+}
+form {
+    background-color: rgb(207, 207, 207);
+}
+form  input {
     padding: 5px 20px;
-    margin: 0 10px;
-    border-radius: 999px;
+    margin: 10px 10px;
     background-color: #eff2f5;
+    width: 70%;
+    border-radius: 5px;
+}
+.exercise__add,
+.exercise__start {
+    position: flex;
+    padding: 5px 20px;
+    margin: 10px 10px;
+    background-color: rgb(182, 182, 182);
+    width: 40%;
+    margin-left: 30px;
+    border-radius: 10px;
+    border: 1px solid gray;
+
+}
+.exercise__add:hover,
+.exercise__start:hover {
+    color: #fff;
+    background-color: gray;
+}
+.exercise__list {
+    text-align: left;
+    width: 100%;
+    margin-top: 20px
+}
+div {
+    border-radius: 10px;
 }

@@ -3,22 +3,65 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
+    height: 600px;
+    padding-top: 48px;
+    background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
 }
-.timer-inner {
+.timer__inner {
+    display: block;
     position: relative;
     padding: 32px;
     width: 100%;
+    height: 100%;
     max-width: 640px;
-    background-color: white;
     color: black;
+    background-clip: content-box;
+    border-radius: 10px;
+    background-color: rgb(207, 207, 207)
 }
-.timer-inner .close-btn {
-    position: absolute;
-    top: 16px;
-    right: 16px
+.timer__buttons {
+    display: block;
+    float: right;
+    padding: 15px;
+    background-color: transparent;
+    width: 40%;
+    margin-right: 10px;
+}
+.timer__buttons > button {
+    margin-right: 10px;
+    width: 45%;
+    height: 35px;
+    border-radius: 5px;
+    background-color: rgb(182, 182, 182);
+    border: 1px solid gray;
+}
+.timer__buttons > button:hover {
+    color: #fff;
+    background-color: gray;
+}
+.timer__Info {
+    display: block;
+    background-color: rgba(230, 230, 230, 0.6);
+    margin: auto;
+    height: 100%;
+    padding-top: 20px;
+}
+.timer__taskName {
+    color: red;
+    background-color: transparent;
+    height: 40%;
+    font-size: 25px;
+    padding-top: 45px;
+}
+.timer__taskTimer {
+    font-size: 150px;
+    color: blue;
+    width: 100%;
+    height: 60%;
+    background-color: transparent;
+    padding-top: 100px;
 }
