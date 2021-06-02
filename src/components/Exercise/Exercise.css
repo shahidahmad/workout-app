@@ -1,7 +1,4 @@
 .exercise {
-    justify-content: center;
-    align-items: center;
-    justify-content: center;
     text-align: center;
 
 }
@@ -9,15 +6,13 @@
     background-color: gray;;
     height: 80px;
     padding-top: 20px;
-    padding-left: 40px;
-    font-size: 26px;
+    font-size: 30px;
 }
 .exercise__form {
     display: inline-block;
     padding: 15px;
     max-width: 550px;
     margin-top: 30px;
-    justify-content: center;
     align-items: center;
     background-color: rgb(207, 207, 207);
 }
@@ -33,18 +28,16 @@ form  input {
 }
 .exercise__add,
 .exercise__start {
-    position: flex;
     padding: 5px 20px;
-    margin: 10px 10px;
+    margin: 10px;
     background-color: rgb(182, 182, 182);
     width: 40%;
-    margin-left: 30px;
     border-radius: 10px;
     border: 1px solid gray;
 
 }
-.exercise__add:hover,
-.exercise__start:hover {
+.exercise__add:hover:enabled,
+.exercise__start:hover:enabled {
     color: #fff;
     background-color: gray;
 }

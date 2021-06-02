@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Task from './Task';
+import Task from '../Task/Task';
 import './Exercise.css';
-import Timer from './Timer';
+import Timer from '../Timer/Timer';
 
 function Exercise() {
 
@@ -14,12 +14,18 @@ function Exercise() {
     const addExercies = (e) => {
         e.preventDefault();
         if (name === '' || time === '') return;
-        setName(() => '');
-        setTime(() => '');
         setExerciseList((arr) => {
-            const exercise = {name, time};
-            if (arr.length > 0 && breakTime !== '' && breakTime) {
-                return [...arr, {name: 'Break', time: breakTime}, exercise]
+            const exercise = {
+                name,
+                time,
+            };
+            setName('');
+            setTime('');
+
+            const insertBreak = breakTime && breakTime !== '';
+            if (arr.length > 0 && insertBreak) {
+                const breakObj = {name: 'Break', time: breakTime}
+                return [...arr, breakObj, exercise]
             } else {
                 return [...arr, exercise]
             }
@@ -39,7 +45,7 @@ function Exercise() {
         let setVal;
         if (isNumeric) {
             const number = parseInt(targetVal, 10);
-            setVal = number <= 3600 ? true : false;
+            setVal = number <= 3600 ? true : false; // Just to be sure that users are not able to enter large numbers of seconds
         }
         if (setVal || targetVal === '') {
             switch (targetName) {
@@ -62,42 +68,44 @@ function Exercise() {
             <div className="exercise__form">
                 <form>
                     <input
-                        value={breakTime}
-                        onChange={setFieldValue}
-                        className="break__time"
-                        placeholder="Enter Break Time in Seconds(Optional)"
-                        key="break"
-                        name="break"
-                    />
-                    <input
                         value={name}
                         onChange={e => setName(e.target.value)}
                         className="exercise__name"
-                        placeholder="Enter Exercise Name(Required)"
+                        placeholder="Enter Exercise Name (Required)"
                         key="name"
                         />
                     <input
                         value={time}
                         onChange={setFieldValue}
-                        placeholder="Enter Time in Seconds(Required)"
+                        placeholder="Enter Time in Seconds (Required)"
                         key="time"
                         name="time"
+                        />
+                    <input
+                        value={breakTime}
+                        onChange={setFieldValue}
+                        className="break__time"
+                        placeholder="Enter Break Time in Seconds (Optional)"
+                        key="break"
+                        name="break"
                         />
                     <button
                         className="exercise__add"
                         onClick={addExercies}
                         type="submit"
                         key="add"
+                        disabled={name === '' || time === ''}
                     >
-                        Add Exercise
+                        Add Exercise to List
                     </button>
                 </form>
                 <button
                     className="exercise__start"
                     onClick={startExercise}
                     key="start"
+                    disabled={exerciseList.length === 0}
                 >
-                    Start Exercise
+                    Click to start Exercise
                 </button>
             </div>
             <div className="exercise__list">

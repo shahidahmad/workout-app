@@ -8,28 +8,20 @@
     background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
-    align-items: center;
-    border-radius: 10px;
 }
 .timer__inner {
-    display: block;
-    position: relative;
     padding: 32px;
+    margin-top: 50px;
     width: 100%;
     height: 100%;
     max-width: 640px;
-    color: black;
-    background-clip: content-box;
-    border-radius: 10px;
     background-color: rgb(207, 207, 207)
 }
 .timer__buttons {
-    display: block;
     float: right;
     padding: 15px;
     background-color: transparent;
     width: 40%;
-    margin-right: 10px;
 }
 .timer__buttons > button {
     margin-right: 10px;
@@ -44,24 +36,21 @@
     background-color: gray;
 }
 .timer__Info {
-    display: block;
     background-color: rgba(230, 230, 230, 0.6);
-    margin: auto;
     height: 100%;
-    padding-top: 20px;
 }
 .timer__taskName {
-    color: red;
     background-color: transparent;
-    height: 40%;
-    font-size: 25px;
+    font-size: 60px;
     padding-top: 45px;
 }
 .timer__taskTimer {
     font-size: 150px;
-    color: blue;
-    width: 100%;
-    height: 60%;
     background-color: transparent;
     padding-top: 100px;
+}
+.timer__secondsInfo {
+    font-size: 20px;
+    background-color: transparent;
+    margin-top: -20px;
 }
