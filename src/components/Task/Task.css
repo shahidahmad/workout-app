@@ -3,7 +3,7 @@
     padding: 15px;
     max-width: 500px;
     align-items: center;
-    margin-left: 34%;
+    margin: auto;
     border: 1px solid;
 }
 .task__text {

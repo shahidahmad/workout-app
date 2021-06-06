@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Task.css';
+import TimerContext from '../../TimerContext.js';
 function Task(props) {
     const {
         name,
         seconds,
-        exerciseList,
         index,
-        setExerciseList,
     } = props;
-
+    const context = useContext(TimerContext);
+    const {
+        exerciseList,
+        setExerciseList,
+    } = context
     const removeTask = () => {
         const lastIndex = exerciseList.length - 1;
         const updatedList = [];
@@ -37,21 +40,21 @@ function Task(props) {
         setExerciseList(updatedList)
     }
     return (
-        <div className="task">
-            <div className="task__Info">
-                <p className="task__text">
-                    <span className="task__index">{index + 1}.</span> <b>{name}</b> for <b>{seconds}</b> seconds
-                </p>
-                {
-                    name !== 'Break' 
-                    && <button
-                            className="task__remove"
-                            onClick={removeTask}
-                        >
-                            Remove
-                    </button>}
+            <div className="task">
+                <div className="task__Info">
+                    <p className="task__text">
+                        <span className="task__index">{index + 1}.</span> <b>{name}</b> for <b>{seconds}</b> seconds
+                    </p>
+                    {
+                        name !== 'Break' 
+                        && <button
+                                className="task__remove"
+                                onClick={removeTask}
+                            >
+                                Remove
+                        </button>}
+                </div>
             </div>
-        </div>
     )
 }
 

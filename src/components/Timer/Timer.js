@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Timer.css';
+import TimerContext from '../../TimerContext.js';
 /**
  * 
  * @param {*} props 
  * Timer component is responsible for the pop-up that actually displays
  * timers of different different activities in Exercise List
  */
-function Timer(props) {
-
+function Timer() {
+    const context = useContext(TimerContext)
+    
     const {
         displayTimer,
         setDisplayTimer,
         exerciseList,
-    } = props;
+    } = context;
     const [task, setTask] = useState('')
     const [timer, setTimer] = useState('');
     const [pause, setPause] = useState(false);
     const [currIdx, setCurrIdx] = useState(0);
     const [start, setStart] = useState(false);
+    const [interval, setTimerInterval] = useState('');
 
 
     useEffect(() => {
@@ -31,36 +34,32 @@ function Timer(props) {
         if (!displayTimer || !start) {
             return;
         }
+        if (pause) {
+            return clearInterval(interval);
+        }
         const lastIdx = exerciseList.length - 1;
         let currentTimer = timer;
         let curExerIdx = currIdx;
-        const interval = setInterval(() => {
-            /**
-             * If current index is the last one and current timer is -1 OR if Pause putton
-             * is clicked then kill the setInterval
-             */
-            if ((currentTimer === -1 && curExerIdx === lastIdx) || pause) {
-                // If the currentTimer is -1 then reset every all props except for pause
-                if(!pause) {
-                    setTimer(parseInt(exerciseList[0].time, 10));
-                    setTask(exerciseList[0].name);
-                    setCurrIdx(0);
-                    setStart(false)
+        // setTask(currentTimer--);
+        setTimer(currentTimer--);
+        setTimerInterval(setInterval(() => {
+            if (currentTimer === -1) {
+                if (curExerIdx < lastIdx) {
+                    currentTimer = parseInt(exerciseList[++curExerIdx].time, 10);
+                    console.log('------exterlist, curExerIdx', exerciseList, curExerIdx)
+                    setTask(exerciseList[curExerIdx].name);
+                    setTimer(--currentTimer);
+                    setCurrIdx(curExerIdx);
+                    return;
                 }
+                setTimer(parseInt(exerciseList[0].time, 10));
+                setTask(exerciseList[0].name);
+                setCurrIdx(0);
+                setStart(false)
                 return clearInterval(interval);
             }
-            setTask(exerciseList[curExerIdx].name);
-            setTimer(currentTimer);
-            currentTimer--;
-            // CurrentTimer is -1 and we still have exercises in the list, then it's time
-            // increment current index and reset current timer
-            if (currentTimer === -1 && curExerIdx < lastIdx) {
-                curExerIdx++
-                currentTimer = parseInt(exerciseList[curExerIdx].time, 10);
-                setCurrIdx(curExerIdx)
-            }
-
-        }, 1000);
+            setTimer(currentTimer--);
+        }, 1000));
         return () => clearInterval(interval);
     }, [displayTimer, pause, start]);
 
@@ -83,20 +82,6 @@ function Timer(props) {
     const onResumeClick = (e) => {
         e.preventDefault();
         setPause(false);
-        const lastIndex = exerciseList.length - 1;
-        /**
-         * Handles edge cases,
-         * If timer is 0 and is currently being resumed then decrement
-         * current element index and set task name
-         */
-        if (timer === 0) {
-            const lastIdxTask = exerciseList[lastIndex].name;
-            if (currIdx === lastIndex && lastIdxTask === task) {            
-                return;
-            }
-            setCurrIdx(currIdx - 1);
-            setTask(exerciseList[currIdx - 1].name);
-        }
 
     };
 
@@ -141,6 +126,6 @@ function Timer(props) {
                 </div>
             </div>
         </div>
-    ) : "";
+        ) : "";
 }
 export default Timer;

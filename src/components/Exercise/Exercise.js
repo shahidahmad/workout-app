@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Task from '../Task/Task';
 import './Exercise.css';
 import Timer from '../Timer/Timer';
+import TimerContext from '../../TimerContext';
 
 function Exercise() {
-
     const [name, setName] = useState('');
     const [time, setTime] = useState('');
-    const [exerciseList, setExerciseList] = useState([]);
-    const [displayTimer, setDisplayTimer] = useState(false);
     const [breakTime, setBreakTime] = useState('');
+    const value = useContext(TimerContext);
+    const { 
+        exerciseList,
+        setExerciseList,
+        displayTimer,
+        setDisplayTimer
+    }  = value
+    console.log('-----context from exercise.js', value)
 
     const addExercies = (e) => {
         e.preventDefault();
