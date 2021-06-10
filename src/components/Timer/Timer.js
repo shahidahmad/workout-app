@@ -40,13 +40,11 @@ function Timer() {
         const lastIdx = exerciseList.length - 1;
         let currentTimer = timer;
         let curExerIdx = currIdx;
-        // setTask(currentTimer--);
         setTimer(currentTimer--);
         setTimerInterval(setInterval(() => {
             if (currentTimer === -1) {
                 if (curExerIdx < lastIdx) {
                     currentTimer = parseInt(exerciseList[++curExerIdx].time, 10);
-                    console.log('------exterlist, curExerIdx', exerciseList, curExerIdx)
                     setTask(exerciseList[curExerIdx].name);
                     setTimer(--currentTimer);
                     setCurrIdx(curExerIdx);
