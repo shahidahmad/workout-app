@@ -6,6 +6,7 @@ import { useState } from 'react';
 function App() {
   const [exerciseList, setExerciseList] = useState([]);
   const [displayTimer, setDisplayTimer] = useState(false);
+  const [start, setStart] = useState(false);
   return (
     <div className="App">
       <TimerContext.Provider
@@ -15,6 +16,8 @@ function App() {
             displayTimer,
             setExerciseList,
             setDisplayTimer,
+            start,
+            setStart,
           }
         }>
         <Exercise />

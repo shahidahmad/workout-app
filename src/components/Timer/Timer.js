@@ -14,12 +14,13 @@ function Timer() {
         displayTimer,
         setDisplayTimer,
         exerciseList,
+        start,
+        setStart,
     } = context;
     const [task, setTask] = useState('')
     const [timer, setTimer] = useState('');
     const [pause, setPause] = useState(false);
     const [currIdx, setCurrIdx] = useState(0);
-    const [start, setStart] = useState(false);
     const [interval, setTimerInterval] = useState('');
 
 
@@ -31,10 +32,7 @@ function Timer() {
     }, [exerciseList])
 
     useEffect(() => {
-        if (!displayTimer || !start) {
-            return;
-        }
-        if (pause) {
+        if (!displayTimer || !start || pause) {
             return clearInterval(interval);
         }
         const lastIdx = exerciseList.length - 1;
@@ -46,7 +44,7 @@ function Timer() {
                 if (curExerIdx < lastIdx) {
                     currentTimer = parseInt(exerciseList[++curExerIdx].time, 10);
                     setTask(exerciseList[curExerIdx].name);
-                    setTimer(--currentTimer);
+                    setTimer(currentTimer--);
                     setCurrIdx(curExerIdx);
                     return;
                 }
@@ -58,7 +56,6 @@ function Timer() {
             }
             setTimer(currentTimer--);
         }, 1000));
-        return () => clearInterval(interval);
     }, [displayTimer, pause, start]);
 
     const onCancelClick = (e) => {

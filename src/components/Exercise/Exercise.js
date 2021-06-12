@@ -12,10 +12,9 @@ function Exercise() {
     const { 
         exerciseList,
         setExerciseList,
-        displayTimer,
-        setDisplayTimer
+        setDisplayTimer,
+        setStart,
     }  = value
-    console.log('-----context from exercise.js', value)
 
     const addExercies = (e) => {
         e.preventDefault();
@@ -40,7 +39,8 @@ function Exercise() {
 
     const startExercise = () => {
         if (exerciseList.length > 0) {
-            setDisplayTimer(true)
+            setDisplayTimer(true);
+            setStart(true);
         }
     }
 
@@ -122,18 +122,12 @@ function Exercise() {
                             index={idx}
                             name={exercise.name}
                             seconds={exercise.time}
-                            exerciseList={exerciseList}
-                            setExerciseList={setExerciseList}
                         />
                     })
                 }
             </div>
             <div className="exercise__timer">
-                <Timer
-                    displayTimer={displayTimer}
-                    setDisplayTimer={setDisplayTimer}
-                    exerciseList={exerciseList}
-                />
+                <Timer />
             </div>
         </div>
     )
