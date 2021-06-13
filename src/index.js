@@ -1,7 +1,6 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
-import TimerContext from './TimerContext';
 
 ReactDOM.render(
   <React.StrictMode>

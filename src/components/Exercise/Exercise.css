@@ -49,3 +49,11 @@ form  input {
 div {
     border-radius: 10px;
 }
+.timer__close {
+    background-color: transparent;
+    float: right;
+    color: white
+}
+.timer__close:hover {
+    color: black
+}
